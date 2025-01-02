@@ -1,11 +1,10 @@
 {
-    "public": "./dist",
-    "rewrites": [
-      {
-        "source": "/(.*)",
-        "destination": "/index.html"
-      }
-    ],
-    "ignoreBuildStep": false
-  }
-  
+  "public": "./src",
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ],
+  "ignoreBuildStep": false
+}
