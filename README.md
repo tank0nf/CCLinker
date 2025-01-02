@@ -75,10 +75,10 @@
 ## 🖥️ **Screenshots**
 
 ### 📸 Homepage
-![Homepage](#) <!-- Add screenshot of the homepage -->
+![Homepage](https://github.com/tank0nf/CCLinker/blob/main/assets/homepage.png?raw=true) <!-- Add screenshot of the homepage -->
 
 ### 📸 Login Page
-![Login Page](#) <!-- Add screenshot of the login page -->
+![Login Page]() <!-- Add screenshot of the login page -->
 
 ### 📸 Dashboard
 ![Dashboard](#) <!-- Add screenshot of the dashboard -->
