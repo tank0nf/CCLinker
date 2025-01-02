@@ -1,6 +1,4 @@
-# 🚀 **CCLinker: Privacy-Focused Supabase-Powered URL Shortener**
-
-![CCLinker Logo](#) <!-- Add project logo here -->
+# 🔗 **CCLinker: Privacy-Focused Supabase-Powered URL Shortener**
 
 **CCLinker** is a secure and privacy-focused **URL shortener** built with **Supabase** for backend and **Vanilla JavaScript + TailwindCSS** for frontend. It allows users to create, manage, and share short URLs with advanced access controls, analytics, and notifications.
 
@@ -155,6 +153,15 @@ SUPABASE_API_KEY=your_supabase_api_key
 ## 🤝 **Contributing**
 
 Contributions are welcome! Follow these steps:
+1. Fork the repository.
+2. Create a new branch: `git checkout -b feature-branch`.
+3. Make your changes.
+4. Submit a pull request.
+
+---
+
+## ✅ **TODO**
+
 1. Fork the repository.
 2. Create a new branch: `git checkout -b feature-branch`.
 3. Make your changes.
