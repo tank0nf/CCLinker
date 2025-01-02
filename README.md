@@ -162,11 +162,9 @@ Contributions are welcome! Follow these steps:
 
 ## ✅ **TODO**
 
-1. Fork the repository.
-2. Create a new branch: `git checkout -b feature-branch`.
-3. Make your changes.
-4. Submit a pull request.
-
+1. Make a Logo.
+2. Make Homepage more interactive and more informative.
+3. Add additional features
 ---
 
 ### 🌟 **Star this repo if you found it useful!**
