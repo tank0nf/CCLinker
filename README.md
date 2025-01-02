@@ -78,16 +78,16 @@
 ![Homepage](https://github.com/tank0nf/CCLinker/blob/main/assets/homepage.png?raw=true) <!-- Add screenshot of the homepage -->
 
 ### 📸 Login Page
-![Login Page]() <!-- Add screenshot of the login page -->
+![Login Page](https://github.com/tank0nf/CCLinker/blob/main/assets/login_page.png?raw=true) <!-- Add screenshot of the login page -->
 
 ### 📸 Dashboard
-![Dashboard](#) <!-- Add screenshot of the dashboard -->
+![Dashboard](https://github.com/tank0nf/CCLinker/blob/main/assets/dashboard.png?raw=true) <!-- Add screenshot of the dashboard -->
 
 ### 📸 Intermediate Access Page
-![Access Page](#) <!-- Add screenshot of intermediate page -->
+![Access Page](https://github.com/tank0nf/CCLinker/blob/main/assets/intermidiate.png?raw=true) <!-- Add screenshot of intermediate page -->
 
 ### 📸 Analytics Page
-![Analytics Page](#) <!-- Add screenshot of analytics page -->
+![Analytics Page](https://github.com/tank0nf/CCLinker/blob/main/assets/analytics.png?raw=true) <!-- Add screenshot of analytics page -->
 
 ---
 
