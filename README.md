@@ -1,4 +1,4 @@
-# 🔗 **CCLinker: Privacy-Focused Supabase-Powered URL Shortener**
+# 🔗 **CCLinker: Privacy-Focused URL Shortener**
 
 **CCLinker** is a secure and privacy-focused **URL shortener** built with **Supabase** for backend and **Vanilla JavaScript + TailwindCSS** for frontend. It allows users to create, manage, and share short URLs with advanced access controls, analytics, and notifications.
 
