@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '../lib/supabase';
 import { AccessLog } from '../types';
-import { format, startOfDay } from 'date-fns';
+import { format, startOfDay, subDays } from 'date-fns';
 
 interface ClicksByDate {
   date: string;
@@ -13,15 +13,11 @@ export function useAccessLogs() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
 
-  useEffect(() => {
-    fetchLogs();
-  }, []);
-
   const fetchLogs = async () => {
     try {
       const { data, error } = await supabase
         .from('access_logs')
-        .select('*')
+        .select('*, links(short_id, original_url)')
         .order('created_at', { ascending: false });
 
       if (error) throw error;
@@ -33,18 +29,37 @@ export function useAccessLogs() {
     }
   };
 
-  const clicksByDate = logs.reduce<ClicksByDate[]>((acc, log) => {
-    const date = format(startOfDay(new Date(log.created_at)), 'yyyy-MM-dd');
-    const existing = acc.find(item => item.date === date);
-    
-    if (existing) {
-      existing.clicks += 1;
-    } else {
-      acc.push({ date, clicks: 1 });
-    }
-    
-    return acc;
-  }, []).sort((a, b) => a.date.localeCompare(b.date));
+  useEffect(() => {
+    fetchLogs();
+
+    // Set up real-time subscription
+    const subscription = supabase
+      .channel('access_logs_channel')
+      .on('postgres_changes', 
+        { 
+          event: '*', 
+          schema: 'public', 
+          table: 'access_logs' 
+        }, 
+        () => {
+          fetchLogs();
+        }
+      )
+      .subscribe();
+
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, []);
+
+  // Get clicks for the last 30 days
+  const clicksByDate = Array.from({ length: 30 }, (_, i) => {
+    const date = format(subDays(new Date(), i), 'yyyy-MM-dd');
+    const clicks = logs.filter(log => 
+      format(startOfDay(new Date(log.created_at)), 'yyyy-MM-dd') === date
+    ).length;
+    return { date, clicks };
+  }).reverse();
 
   return {
     logs,

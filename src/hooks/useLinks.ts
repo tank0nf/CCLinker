@@ -7,15 +7,16 @@ export function useLinks() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
 
-  useEffect(() => {
-    fetchLinks();
-  }, []);
-
   const fetchLinks = async () => {
     try {
       const { data, error } = await supabase
         .from('links')
-        .select('*')
+        .select(`
+          *,
+          access_logs (
+            created_at
+          )
+        `)
         .order('created_at', { ascending: false });
 
       if (error) throw error;
@@ -26,6 +27,29 @@ export function useLinks() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    fetchLinks();
+
+    // Set up real-time subscription
+    const subscription = supabase
+      .channel('links_channel')
+      .on('postgres_changes', 
+        { 
+          event: '*', 
+          schema: 'public', 
+          table: 'links' 
+        }, 
+        () => {
+          fetchLinks();
+        }
+      )
+      .subscribe();
+
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, []);
 
   const totalClicks = links.reduce((sum, link) => sum + link.access_count, 0);
   const activeLinks = links.filter(link => {
